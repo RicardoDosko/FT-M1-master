@@ -14,24 +14,85 @@ Secuencia:  0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
 Como ejercicio adicional y completamente opcional, al terminar de resolver este problema pueden intentar definir funciones que logren los mismos resultados pero de manera iterativa.
 */
 
-function nFactorial(n) {}
+function nFactorial(n) {
+    if (n === 0) {
+        return 1;
+    } else {
+        return n * nFactorial(n - 1);
+    }
+}
 
-function nFibonacci(n) {}
+function nFibonacci(n) {
+    if (n === 0) {
+        return 0;
+    } else if (n === 1) {
+        return 1;
+    } else {
+        return nFibonacci(n - 1) + nFibonacci(n - 2);
+    }
+}
+console.log(nFactorial(5))
+console.log(nFibonacci(7))
+    /*
+    Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde el primer elemento que ingresa es el primero que se quita. Definir los siguientes métodos:
+      - enqueue: agrega un valor respetando el orden.
+      - dequeue: remueve un valor respetando el orden. Retorna undefined cuando la queue está vacía.
+      - size: retorna el tamaño (cantidad de elementos) de la queue.
 
-/*
-Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde el primer elemento que ingresa es el primero que se quita. Definir los siguientes métodos:
-  - enqueue: agrega un valor respetando el orden.
-  - dequeue: remueve un valor respetando el orden. Retorna undefined cuando la queue está vacía.
-  - size: retorna el tamaño (cantidad de elementos) de la queue.
+    Pueden utilizar class o función constructora.
+    */
+    /* 
+    function Queue() {
+        this.queue = [];
+    }
 
-Pueden utilizar class o función constructora.
-*/
+    Queue.prototype.enqueue = function(value) {
+        this.queue.push(value);
+    };
 
-function Queue() {}
+    Queue.prototype.dequeue = function() {
+        if (this.vacio()) {
+            return undefined;
+        }
+        return this.queue.shift();
+    };
+
+    Queue.prototype.size = function() {
+        return this.queue.length;
+    };
+
+    Queue.prototype.vacio = function() {
+        return this.size() === 0;
+    };*/
+
+class Queue {
+    constructor() {
+        this.queue = [];
+    }
+
+    enqueue(value) {
+        this.queue.push(value);
+    }
+
+    dequeue() {
+        if (this.vacio()) {
+            return undefined;
+        }
+        return this.queue.shift();
+    }
+
+    size() {
+        return this.queue.length;
+    }
+
+    vacio() {
+        return this.size() === 0;
+    }
+}
 
 /*⚠️ No modificar nada debajo de esta línea ⚠️*/
 module.exports = {
-   Queue,
-   nFactorial,
-   nFibonacci,
+    Queue,
+    nFactorial,
+    nFibonacci,
 };
